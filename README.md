@@ -1,14 +1,11 @@
-# ubuntu-playbook
-Helpful playbook to install all the necessary componets on fresh ubuntu installation
-
 # Ubuntu Playbook 🐧
-The purpose of this script is to easy install all the necessary tools/configurations in a kali machine. The supported installations/configurations in this moment are:
+Helpful playbook to install all the necessary components on fresh ubuntu installation. The purpose of this script is to easy install all the necessary tools/configurations in a kali machine. The supported installations/configurations in this moment are:
 * vscode
 * zsh, ohmyz and powerlevel10k
 * pyenv and enable virtualenv version on zsh bash
 * docker-ce, docker compose plugin
 * minikube
-* golang (v1.21.3 x86-64)
+* golang (v1.21.6 x86-64)
   
 <!-- ## Table of contents
     * [General info](#general-info)
@@ -19,7 +16,7 @@ The purpose of this script is to easy install all the necessary tools/configurat
 ## Installation 🔨
 
 ```
-wget -qO https://raw.githubusercontent.com/Sk3pper/ubuntu-playbook/main/Bash/ubuntu-playbook.sh
+wget -qO ubuntu-playbook.sh https://raw.githubusercontent.com/Sk3pper/ubuntu-playbook/main/Bash/ubuntu-playbook.sh
 chmod 744 ./ubuntu-playbook.sh
 ./ubuntu-playbook.sh --help
 ```
@@ -43,7 +40,7 @@ Available options:
 -k, --pl10k                 Install powerlevel10k template on zsh
 -p, --pyenv                 Install pyenv
 -d, --docker                Install docker-ce and docker-compose-plugin
--g, --golang                Install golang 1.21.3 x86-64
+-g, --golang                Install golang 1.21.6 x86-64
 -m, --minikube              Install latest minikube version
 ```
 
@@ -64,7 +61,7 @@ Available options:
 # install docker-ce, docker compose plugin
 ./ubuntu-playbook.sh --docker  --user $(whoami) --log-path-file log
 
-# install golang v1.21.3 x86-64
+# install golang v1.21.6 x86-64
 ./ubuntu-playbook.sh --golang --log-path-file log
 
 # install golang minikube
