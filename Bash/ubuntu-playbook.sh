@@ -339,8 +339,8 @@ install_docker(){
     msg "${ORANGE}" " Installing docker....."
     sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin &>> "${log_path_file}"
 
-    # Add your user to the 'docker' group: 
-    sudo usermod -aG docker $user && newgrp docker  &>> "${log_path_file}"
+    # Add your user to the 'docker' group
+    sudo usermod -aG docker "$user" &>> "${log_path_file}"
 
     # check installation
     sudo docker pull hello-world &>> "${log_path_file}"

@@ -47,19 +47,19 @@ Available options:
 #### Examples
 ```
 # install all components
-./ubuntu-playbook.sh --all --user $(whoami) --log-path-file log
+./ubuntu-playbook.sh --all --user ubuntu --log-path-file log
 
 # install vscode
 ./ubuntu-playbook.sh --vscode --log-path-file log
 
 # install oh-my-zsh and powerlevel10k
-./ubuntu-playbook.sh --omz --pl10k --user $(whoami) --log-path-file log
+./ubuntu-playbook.sh --omz --pl10k --user ubuntu --log-path-file log
 
 # install pyenv
-./ubuntu-playbook.sh --pyenv --user $(whoami) --log-path-file log
+./ubuntu-playbook.sh --pyenv --user ubuntu --log-path-file log
 
 # install docker-ce, docker compose plugin
-./ubuntu-playbook.sh --docker  --user $(whoami) --log-path-file log
+./ubuntu-playbook.sh --docker  --user ubuntu --log-path-file log
 
 # install golang v1.21.6 x86-64
 ./ubuntu-playbook.sh --golang --log-path-file log
