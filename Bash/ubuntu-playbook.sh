@@ -193,7 +193,7 @@ install_vscode(){
 install_zsh_omz(){
     msg "${BLUE}" "\n******** zsh and oh My Zsh! ******"
     # install ZSH
-    local cmd="apt -y install zsh git"
+    local cmd="apt -y install zsh git curl"
     notify_elevate "$cmd"
     sudo $cmd &>> ${log_path_file}
 
