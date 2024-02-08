@@ -301,7 +301,7 @@ install_pyenv(){
         echo -e "\n# ======= pyenv load path config ======= \nexport PYENV_ROOT=\"\$HOME/.pyenv\" \nexport PATH=\"\$PYENV_ROOT/bin:\$PATH\" \nif command -v pyenv 1>/dev/null 2>&1; then \neval \"\$(pyenv init --path)\" \nfi \neval \"\$(pyenv virtualenv-init -)\"" >> /home/"${user}"/.zshrc
     else
         msg "${PURPLE}" " The following string should be manually added to your shell configuration file (such as.bashrc)"
-        echo -e "\n# ======= pyenv load path config ======= \nexport PYENV_ROOT=\"\$HOME/.pyenv\" \nexport PATH=\"\$PYENV_ROOT/bin:\$PATH\" \nif command -v pyenv 1>/dev/null 2>&1; then \neval \"\$(pyenv init --path)\" \nfi \neval \"\$(pyenv virtualenv-init -)\""
+        echo -e "\n# ======= pyenv load path config ======= \nexport PYENV_ROOT=\"\$HOME/.pyenv\" \nexport PATH=\"\$PYENV_ROOT/bin:\$PATH\" \nexport PATH=\"\$(pyenv root)/versions/\$(pyenv version-name)/bin:$PATH\" \nif command -v pyenv 1>/dev/null 2>&1; then \neval \"\$(pyenv init --path)\" \nfi \neval \"\$(pyenv virtualenv-init -)\""
     fi   
 
     msg "${PURPLE}" "****************************************************\n"
