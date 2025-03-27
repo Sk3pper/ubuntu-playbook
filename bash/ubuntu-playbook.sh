@@ -133,7 +133,7 @@ parse_params() {
         shift
     done
 
-    # at the end the remaing information (after n*shift) will be the script arguments
+    # at the end the remaining information (after n*shift) will be the script arguments
     args=("$@")
 
     # check required params and arguments
@@ -259,7 +259,7 @@ install_pl10k(){
     then
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k &>> "${log_path_file}"
     else
-        msg "${CYAN}" "\n powerlevel10k theme is alredy present, enabling it"
+        msg "${CYAN}" "\n powerlevel10k theme is already present, enabling it"
     fi
 
     # enable powerlevel10k theme

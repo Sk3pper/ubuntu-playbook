@@ -92,7 +92,7 @@ Template bash script template is taken from [script-template.sh](https://gist.gi
 ### Golang 🐹
 #Todo -->
 
-<!-- Enviroment where it was tested -->
+<!-- Environment where it was tested -->
 
 ## Tests
 Tested on
