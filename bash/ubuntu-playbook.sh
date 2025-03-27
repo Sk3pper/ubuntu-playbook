@@ -370,7 +370,7 @@ install_golang(){
     msg "${GRAY}" "******** Installing golang ******"
 
     # download golang
-    msg "$a{GRAY}" " Downloading golang binary release at $download_url"
+    msg "${GRAY}" " Downloading golang binary release at ${download_url}"
     wget -q $download_url &>> ${log_path_file}; 
 
     # remove any previous Go installation by deleting the /usr/local/go folder (if it exists), then extract the archive you just downloaded into /usr/local, creating a fresh Go tree in /usr/local/go
