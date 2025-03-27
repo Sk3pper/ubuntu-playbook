@@ -16,7 +16,7 @@ Helpful playbook to install all the necessary components on fresh ubuntu install
 ## Installation 🔨
 
 ```
-wget -qO ubuntu-playbook.sh https://raw.githubusercontent.com/Sk3pper/ubuntu-playbook/main/Bash/ubuntu-playbook.sh
+wget -qO ubuntu-playbook.sh https://raw.githubusercontent.com/Sk3pper/ubuntu-playbook/main/bash/ubuntu-playbook.sh
 chmod 744 ./ubuntu-playbook.sh
 ./ubuntu-playbook.sh --help
 ```
@@ -84,7 +84,7 @@ EOF
 <!-- I implemented it in three different ways: bash, python and golang. -->
 
 ### Bash 💻
-Template bash script template is taken from [script-template.sh](https://gist.github.com/m-radzikowski/53e0b39e9a59a1518990e76c2bff8038). In this following [link](https://betterdev.blog/minimal-safe-bash-script-template/) you can find the full article. I added the source code template under /Bash folder with mine useful comments.
+Template bash script template is taken from [script-template.sh](https://gist.github.com/m-radzikowski/53e0b39e9a59a1518990e76c2bff8038). In this following [link](https://betterdev.blog/minimal-safe-bash-script-template/) you can find the full article. I added the source code template under /bash folder with mine useful comments.
 
 <!-- ### Python 🐍
 #Todo
