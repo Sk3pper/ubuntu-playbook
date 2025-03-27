@@ -11,6 +11,10 @@ The supported installations/configurations in this moment are:
     minikube
 comment
 
+# global variables
+config_suffix_path="https://raw.githubusercontent.com/Sk3pper/ubuntu-playbook/main/bash/config"
+
+# golang
 golang_version="1.24.1"
 platform="linux-amd64"
 binary_release="go${golang_version}.${platform}.tar.gz"
@@ -273,11 +277,11 @@ install_pl10k(){
     echo -e "\n# To customize prompt, run \`p10k configure\` or edit ~/.p10k.zsh.\n[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >>  /home/"${user}"/.zshrc
 
     # download customize p10k.zsh config file under /home/"${user}"/.p10k.zsh path
-    wget -O /home/"${user}"/.p10k.zsh https://raw.githubusercontent.com/Sk3pper/ubuntu-playbook/main/Bash/config/p10k.zsh &>> "${log_path_file}"
-    wget -O /home/"${user}"/.cache/p10k-instant-prompt.zsh https://raw.githubusercontent.com/Sk3pper/ubuntu-playbook/main/Bash/config/p10k-instant-prompt.zsh &>> "${log_path_file}"
+    wget -O /home/"${user}"/.p10k.zsh ${config_suffix_path}/p10k.zsh &>> "${log_path_file}"
+    wget -O /home/"${user}"/.cache/p10k-instant-prompt.zsh ${config_suffix_path}//p10k-instant-prompt.zsh &>> "${log_path_file}"
     chmod 700 /home/"${user}"/.cache/p10k-instant-prompt.zsh
 
-    wget -O /home/"${user}"/.cache/p10k-instant-prompt.zsh.zwc https://raw.githubusercontent.com/Sk3pper/ubuntu-playbook/main/Bash/config/p10k-instant-prompt.zsh.zwc &>> "${log_path_file}"
+    wget -O /home/"${user}"/.cache/p10k-instant-prompt.zsh.zwc ${config_suffix_path}/p10k-instant-prompt.zsh.zwc &>> "${log_path_file}"
     chmod 444 /home/"${user}"/.cache/p10k-instant-prompt.zsh.zwc
 
     msg "${CYAN}" " To customize prompt as you like, open new terminal and run \`p10k configure\` or edit ~/.p10k.zsh."
