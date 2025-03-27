@@ -1,11 +1,11 @@
 # Ubuntu Playbook 🐧
 Helpful playbook to install all the necessary components on fresh ubuntu installation. The purpose of this script is to easy install all the necessary tools/configurations in a kali machine. The supported installations/configurations in this moment are:
-* vscode
-* zsh, ohmyz and powerlevel10k
-* pyenv and enable virtualenv version on zsh bash
-* docker-ce, docker compose plugin
-* minikube
-* golang (v1.21.6 x86-64)
+* vscode [latest version]
+* zsh, ohmyz and powerlevel10k [latest version]
+* pyenv and enable virtualenv version on zsh bash [latest version]
+* docker-ce, docker compose plugin [latest version]
+* minikube [latest version]
+* golang (v1.24.1 x86-64)
   
 <!-- ## Table of contents
     * [General info](#general-info)
