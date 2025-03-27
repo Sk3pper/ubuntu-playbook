@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
 # The purpose of this script is to easy install all the necessary tools/configurations in a john machine. The supported installations/configurations in this moment are:
-#   vscode
-#   zsh, ohmyz and powerlevel10k
-#   pyenv and enable virtualenv version on zsh bash (if present)
-#   docker-ce, docker compose plugin
-#   golang
+#  vscode
+#  zsh, ohmyz and powerlevel10k
+#  pyenv and enable virtualenv version on zsh bash (if present)
+#  docker-ce, docker compose plugin
+#  golang 
+#  minikube
+
+golang_version="1.21.6"
+platform="linux-amd64"
+binary_release="go${golang_version}.${platform}.tar.gz"
 
 # fail fast
 set -Eeuo pipefail
@@ -27,13 +32,13 @@ Available options:
 -l, --log-path-file         log path file (if not specified only default messages are printed on the terminal)    
 -u, --user                  Specify the user to install components           
 -a, --all                   Install all the tools listed above
--c, --vscode                Install vscode
--z, --omz                   Install zsh and oh-my-zsh
--k, --pl10k                 Install powerlevel10k template on zsh
--p, --pyenv                 Install pyenv
--d, --docker                Install docker-ce and docker-compose-plugin
--g, --golang                Install golang 1.21.6 x86-64
--m, --minikube              Install latest minikube version
+-c, --vscode                Install vscode [latest version]
+-z, --omz                   Install zsh and oh-my-zsh [latest version]
+-k, --pl10k                 Install powerlevel10k template on zsh [latest version]
+-p, --pyenv                 Install pyenv [latest version]
+-d, --docker                Install docker-ce and docker-compose-plugin [latest version]
+-g, --golang                Install golang [$binary_release version]
+-m, --minikube              Install latest minikube version [latest version]
 
 Example:
     - ./ubuntu-playbook.sh --all --user john --log-path-file log
@@ -350,16 +355,13 @@ install_docker(){
     msg "${ORANGE}" "****************************************************\n"
 }
 
-install_golang(){ 
-    msg "${GRAY}" "******** Installing golang ******"
-
-    # Download golang
-    golang_version="1.21.6"
-    platform="linux-amd64"
-    binary_release="go${golang_version}.${platform}.tar.gz"
+install_golang(){
     url_suffix="https://golang.org/dl/"
     download_url="${url_suffix}${binary_release}"
 
+    msg "${GRAY}" "******** Installing golang ******"
+
+    # Download golang
     msg "$a{GRAY}" " Downloading golang binary release at $download_url"
     wget -q $download_url &>> ${log_path_file}; 
 
