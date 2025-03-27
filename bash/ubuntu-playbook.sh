@@ -8,7 +8,7 @@
 #  golang 
 #  minikube
 
-golang_version="1.21.6"
+golang_version="1.24.1"
 platform="linux-amd64"
 binary_release="go${golang_version}.${platform}.tar.gz"
 

@@ -32,16 +32,26 @@ ubuntu-playbook.sh [-h] [-v] [--all] [--vscode] [--zsh] [--user] [--pl10k] [--py
 Available options:
 -h, --help                  Print this help and exit
 -v, --verbose               Print script debug info
--l, --log-path-file         log path file (if not specified only default messages are printed on the terminal)  
--u, --user                  Specify the user to install components             
+-l, --log-path-file         log path file (if not specified only default messages are printed on the terminal)    
+-u, --user                  Specify the user to install components           
 -a, --all                   Install all the tools listed above
--c, --vscode                Install vscode
--z, --omz                   Install zsh and oh-my-zsh
--k, --pl10k                 Install powerlevel10k template on zsh
--p, --pyenv                 Install pyenv
--d, --docker                Install docker-ce and docker-compose-plugin
--g, --golang                Install golang 1.21.6 x86-64
--m, --minikube              Install latest minikube version
+-c, --vscode                Install vscode [latest version]
+-z, --omz                   Install zsh and oh-my-zsh [latest version]
+-k, --pl10k                 Install powerlevel10k template on zsh [latest version]
+-p, --pyenv                 Install pyenv [latest version]
+-d, --docker                Install docker-ce and docker-compose-plugin [latest version]
+-g, --golang                Install golang [1.24.1.linux-amd64]
+-m, --minikube              Install latest minikube version [latest version]
+
+Example:
+    - ./ubuntu-playbook.sh --all --user john --log-path-file log
+    - ./ubuntu-playbook.sh --vscode --log-path-file log
+    - ./ubuntu-playbook.sh --omz --pl10k --user john --log-path-file log
+    - ./ubuntu-playbook.sh --pyenv --user john --log-path-file log
+    - ./ubuntu-playbook.sh --docker --user john --log-path-file log
+    - ./ubuntu-playbook.sh --golang --user john --log-path-file log
+    - ./ubuntu-playbook.sh --minikube --log-path-file log
+EOF
 ```
 
 #### Examples
