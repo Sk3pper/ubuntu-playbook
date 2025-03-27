@@ -278,7 +278,7 @@ install_pl10k(){
 
     # download customize p10k.zsh config file under /home/"${user}"/.p10k.zsh path
     wget -O /home/"${user}"/.p10k.zsh ${config_suffix_path}/p10k.zsh &>> "${log_path_file}"
-    wget -O /home/"${user}"/.cache/p10k-instant-prompt.zsh ${config_suffix_path}//p10k-instant-prompt.zsh &>> "${log_path_file}"
+    wget -O /home/"${user}"/.cache/p10k-instant-prompt.zsh ${config_suffix_path}/p10k-instant-prompt.zsh &>> "${log_path_file}"
     chmod 700 /home/"${user}"/.cache/p10k-instant-prompt.zsh
 
     wget -O /home/"${user}"/.cache/p10k-instant-prompt.zsh.zwc ${config_suffix_path}/p10k-instant-prompt.zsh.zwc &>> "${log_path_file}"
