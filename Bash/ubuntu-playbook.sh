@@ -354,8 +354,14 @@ install_golang(){
     msg "${GRAY}" "******** Installing golang ******"
 
     # Download golang
-    msg "${GRAY}" " Downloading go https://go.dev/dl/go1.21.6.linux-amd64.tar.gz"
-    wget -q https://go.dev/dl/go1.21.6.linux-amd64.tar.gz &>> ${log_path_file}; 
+    golang_version="1.21.6"
+    platform="linux-amd64"
+    binary_release="go${golang_version}.${platform}.tar.gz"
+    url_suffix="https://golang.org/dl/"
+    download_url="${url_suffix}${binary_release}"
+
+    msg "$a{GRAY}" " Downloading golang binary release at $download_url"
+    wget -q $download_url &>> ${log_path_file}; 
 
     # Remove any previous Go installation by deleting the /usr/local/go folder (if it exists), then extract the archive you just downloaded into /usr/local, creating a fresh Go tree in /usr/local/go
     # (You may need to run the command as root or through sudo).
@@ -366,7 +372,7 @@ install_golang(){
     sudo $cmd &>> ${log_path_file}; 
 
     msg "${GRAY}" " Extract the archive into /usr/local, creating a fresh Go tree in /usr/local/go"
-    cmd="tar -C /usr/local -xzf go1.21.6.linux-amd64.tar.gz"
+    cmd="tar -C /usr/local -xzf ${binary_release}"
     notify_elevate "$cmd"
     sudo $cmd &>> ${log_path_file}; 
 
@@ -390,8 +396,9 @@ install_golang(){
     check=$(go version)
     msg "${GRAY}" " Check go installation: $check"
 
-    msg "${GRAY}" " Cleaning file go1.21.6.linux-amd64.tar.gz"
-    rm go1.21.6.linux-amd64.tar.gz
+    msg "${GRAY}" " Cleaning file $binary_release"
+    rm $binary_release
+
     # Confirm that the command prints the installed version of Go.
     msg "${GRAY}" "****************************************************\n"
 }
