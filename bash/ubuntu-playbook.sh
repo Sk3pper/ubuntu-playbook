@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-# The purpose of this script is to easy install all the necessary tools/configurations in a john machine. The supported installations/configurations in this moment are:
-#  vscode
-#  zsh, ohmyz and powerlevel10k
-#  pyenv and enable virtualenv version on zsh bash (if present)
-#  docker-ce, docker compose plugin
-#  golang 
-#  minikube
+<<comment
+The purpose of this script is to easy install all the necessary tools/configurations in a john machine. 
+The supported installations/configurations in this moment are:
+    vscode
+    zsh, ohmyz and powerlevel10k
+    pyenv and enable virtualenv version on zsh bash (if present)
+    docker-ce, docker compose plugin
+    golang 
+    minikube
+comment
 
 golang_version="1.24.1"
 platform="linux-amd64"
@@ -24,7 +27,7 @@ trap cleanup SIGINT SIGTERM ERR EXIT
 usage() {
 msg "${NOFORMAT}"
 cat << EOF # remove the space between << and EOF, this is due to web plugin issue
-Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [--all] [--vscode] [--zsh] [--user] [--pl10k] [--pyenv] [--docker] [--golang] -s stable-debian-version -u zsh-user --log-path-file log-playbook
+Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [--all] [--vscode] [--zsh] [--user] [--pl10k] [--pyenv] [--docker] [--golang] -u zsh-user --log-path-file log-playbook
 
 Available options:
 -h, --help                  Print this help and exit
@@ -295,11 +298,11 @@ install_pyenv(){
     notify_elevate "$cmd"
     sudo $cmd &>> ${log_path_file}
 
-    # Install pyenv
+    # install pyenv
     msg "${PURPLE}" " Installing pyenv...."
     curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash &>> "${log_path_file}"
 
-    # Load pyenv automatically by appending to .zshrc
+    # load pyenv automatically by appending to .zshrc
     # check if .zshrc is installed
     if [[ -f "/home/${user}/.zshrc" ]]; then
         msg "${PURPLE}" " Adding 'pyenv' to the load path of .zshrc ...."
@@ -314,7 +317,8 @@ install_pyenv(){
 
 install_docker(){
     msg "${ORANGE}" "******** Installing docker ******"
-    # Run the following command to uninstall all conflicting packages:
+
+    # uninstall all conflicting packages
     set +Eeuo pipefail
     local cmd="apt remove docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc"
     notify_elevate "$cmd"
@@ -334,7 +338,7 @@ install_docker(){
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc &>> "${log_path_file}"
     sudo chmod a+r /etc/apt/keyrings/docker.asc &>> "${log_path_file}"
 
-    # Add the repository to Apt sources:
+    # add the repository to apt sources:
     echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
@@ -344,7 +348,7 @@ install_docker(){
     msg "${ORANGE}" " Installing docker....."
     sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin &>> "${log_path_file}"
 
-    # Add your user to the 'docker' group
+    # add your user to the 'docker' group
     sudo usermod -aG docker "$user" &>> "${log_path_file}"
 
     # check installation
@@ -361,13 +365,13 @@ install_golang(){
 
     msg "${GRAY}" "******** Installing golang ******"
 
-    # Download golang
+    # download golang
     msg "$a{GRAY}" " Downloading golang binary release at $download_url"
     wget -q $download_url &>> ${log_path_file}; 
 
-    # Remove any previous Go installation by deleting the /usr/local/go folder (if it exists), then extract the archive you just downloaded into /usr/local, creating a fresh Go tree in /usr/local/go
+    # remove any previous Go installation by deleting the /usr/local/go folder (if it exists), then extract the archive you just downloaded into /usr/local, creating a fresh Go tree in /usr/local/go
     # (You may need to run the command as root or through sudo).
-    # Do not untar the archive into an existing /usr/local/go tree. This is known to produce broken Go installations.
+    # do not untar the archive into an existing /usr/local/go tree. This is known to produce broken Go installations.
     msg "${GRAY}" " Remove any previous Go installation by deleting the /usr/local/go folder (if it exists)"
     local cmd="rm -rf /usr/local/go"
     notify_elevate "$cmd"
@@ -378,11 +382,11 @@ install_golang(){
     notify_elevate "$cmd"
     sudo $cmd &>> ${log_path_file}; 
 
-    # Add /usr/local/go/bin to the PATH environment variable.
-    # You can do this by adding the following line to your $HOME/.profile or /etc/profile (for a system-wide installation):
+    # add /usr/local/go/bin to the PATH environment variable.
+    # you can do this by adding the following line to your $HOME/.profile or /etc/profile (for a system-wide installation):
     export PATH=$PATH:/usr/local/go/bin
      
-    # Load pyenv automatically by appending to .zshrc
+    # load pyenv automatically by appending to .zshrc
     # check if .zshrc is installed
     if [[ -f "/home/${user}/.zshrc" ]]; then
         msg "${GRAY}" " Adding 'golang' to the load path .zshrc ...."
@@ -392,7 +396,7 @@ install_golang(){
         echo -e "\n# ======= golang load path config =======\nexport PATH=\$PATH:/usr/local/go/bin"
     fi   
 
-    # Verify that you've installed Go by opening a command prompt and typing the following command
+    # verify that you've installed Go by opening a command prompt and typing the following command
     export PATH=$PATH:/usr/local/go/bin
     local check
     check=$(go version)
@@ -401,7 +405,7 @@ install_golang(){
     msg "${GRAY}" " Cleaning file $binary_release"
     rm $binary_release
 
-    # Confirm that the command prints the installed version of Go.
+    # confirm that the command prints the installed version of Go.
     msg "${GRAY}" "****************************************************\n"
 }
 
